@@ -7,7 +7,7 @@ data = {}
 #FUNCTION**
 def tambah_data(nim,nama,kelas,prodi,lahir):
     """TAMBAH DATA"""
-    if nim in data:
+    if (nim in data):
         print("DATA GAGAL DITAMBAHKAN, NIM SUDAH ADA !")
         return False
     else:
@@ -19,14 +19,14 @@ def tambah_data(nim,nama,kelas,prodi,lahir):
 def cari(nim):
     cari_data = {}
     for key,value in data.items():
-        if nim in key :
+        if (nim in key):
             cari_data[nim] = value
     print(tabulate(cari_data.values(),headers=["Nim","Nama","Kelas","Prodi","Tanggal Lahir"],tablefmt="double_grid",colalign=("left","left","center","left","center")))
 
 
 def update_data(nim):
     """FUNGSI UPDATE"""
-    if nim in data:
+    if (nim in data):
         print("\nDATA YANG AKAN DIUPDATE")
         cari(nim)
     elif (nim =="keluar" or nim == "exit" or nim == "batal"):
@@ -38,7 +38,7 @@ def update_data(nim):
     print("\nSILAHKAN MASUKKAN DATA BARU! ")
 
     while True:
-        nama = input("Masukkan nama\t\t: ").upper()
+        nama = input("Masukkan Nama\t\t: ").upper()
         if (nama == "KELUAR" or nama == "EXIT" or nama == "BATAL"):
             main()
         elif (nama == ""):
@@ -52,7 +52,7 @@ def update_data(nim):
         kelas = input("Masukkan Kelas\t\t: ").upper()
         if (kelas == "KELUAR" or kelas == "EXIT" or kelas == "BATAL"):
             main()
-        elif kelas == "":
+        elif (kelas == ""):
             print("Kelas tidak boleh kosong !")
             continue
         else:
@@ -63,7 +63,7 @@ def update_data(nim):
         prodi = input("Masukkan Prodi\t\t: ").upper()
         if (prodi == "KELUAR" or prodi == "EXIT" or prodi == "BATAL"):
             main()
-        elif prodi == "":
+        elif (prodi == ""):
             print("Prodi tidak boleh kosong !")
             continue
         else:
@@ -85,28 +85,28 @@ def update_data(nim):
 
     while True:
         update = input("Apakah anda yakin ingin mengubah data? [y/n]: ").lower()
-        if update == "y":
+        if (update == "y"):
             update_masbro(nim,nama,kelas,prodi,lahir)
             while True:
                 keluar = input("Keluar[y]: ").lower()
-                if keluar == "y":
+                if (keluar == "y"):
                     main()
                 else:
                     continue
-        elif update == "n":
+        elif (update == "n"):
             print("\nDATA TIDAK JADI DIUPDATE !")
             time.sleep(1.2)
 
             while True:
                 keluar = input("\nKeluar ?[y/update]: ").lower()
-                if keluar == "y":
+                if (keluar == "y"):
                     main()
-                elif keluar == "update":
+                elif (keluar == "update"):
                     update_masbro(nim,nama,kelas,prodi,lahir)
 
                     while True:
                         apakah_keluar = input("Keluar ?[y]").lower()
-                        if apakah_keluar == "y":
+                        if (apakah_keluar == "y"):
                             main()
                         else:
                             print("Hanya ada opsi [y] !")
@@ -131,7 +131,7 @@ def update_masbro(nim,nama,kelas,prodi,lahir):
 
 def hapus_data(nim):
     """HAPUS MAHASISWA"""
-    if nim in data:
+    if (nim in data):
         print("\n\nDATA YANG AKAN DIHAPUS")
         cari(nim)
     elif (nim =="keluar" or nim == "exit" or nim == "batal"):
@@ -143,12 +143,12 @@ def hapus_data(nim):
 
     while True:
         delete = input("Apakah anda yakin ingin menghapus data ?[y/n]: ").lower()
-        if delete == "y":
+        if (delete == "y"):
             del data[nim]
             print("DATA BERHASIL DIHAPUS !")
             time.sleep(1.2)
             main()
-        elif delete == "n":
+        elif (delete == "n"):
             print("DATA TIDAK JADI DIHAPUS !")
             time.sleep(1.2)
             main()
@@ -170,7 +170,7 @@ def tambah_mahasiswa():
         print(f"""{'*'*30}\n*{'TAMBAH MAHASISWA':^28}*\n{'*'*30}\n\nKeluar/Exit untuk batal !\n\nMahasiswa {total_mahasiswa()}\n\nData Diri""")
         
         while True:
-            nama = input("Masukkan nama\t\t: ").upper()
+            nama = input("Masukkan Nama\t\t: ").upper()
             if (nama == "KELUAR" or nama == "EXIT" or nama == "BATAL"):
                 main()
             elif (nama == ""):
@@ -192,7 +192,7 @@ def tambah_mahasiswa():
             kelas = input("Masukkan Kelas\t\t: ").upper()
             if (kelas == "KELUAR" or kelas == "EXIT" or kelas == "BATAL"):
                 main()
-            elif kelas == "":
+            elif (kelas == ""):
                 print("Kelas tidak boleh kosong !")
                 continue
             else:
@@ -204,7 +204,7 @@ def tambah_mahasiswa():
             prodi = input("Masukkan Prodi\t\t: ").upper()
             if (prodi == "KELUAR" or prodi == "EXIT" or prodi == "BATAL"):
                 main()
-            elif prodi == "":
+            elif (prodi == ""):
                 print("Prodi tidak boleh kosong !")
                 continue
             else:
@@ -229,7 +229,7 @@ def tambah_mahasiswa():
 
         while True:
             pilihan = input("\nIngin menambahkan data lagi?[y/n]: ").lower()
-            if (pilihan == "y" ) :
+            if (pilihan == "y"):
                 break
             elif (pilihan == "n"):
                 return main()
@@ -242,13 +242,13 @@ def lihat_mahasiswa():
     """LIHAT MAHASISWA"""
     os.system("clear")
     print(f"""{'*'*30}\n*{'LIHAT DATA':^28}*\n{'*'*30}""")
-    if len(data) <1 :
+    if (len(data) <1):
         print("DATA KOSONG, SILAHKAN TAMBAH DATA TERLEBIH DAHULU !")
     else:
         print(tabulate(data.values(),headers=["Nim","Nama","Kelas","Prodi","Tanggal Lahir"],tablefmt="double_grid",colalign=("left","left","center","left","center")))
    
     keluar = input("Keluar[y]: ").lower()
-    if keluar == "y":
+    if (keluar == "y"):
         main()
     else:
         os.system("clear")
@@ -281,15 +281,15 @@ def main():
 * 4.Delete Mahasiswa{'*':>10}
 * 5.Exit Program{'*':>14}\n{'*'*30}""")
             menu = int(input("Masukkan Pilihan Anda [1/2/3/4/5]: "))
-            if menu ==1 :
+            if (menu == 1):
                 tambah_mahasiswa()
-            if menu == 2 :
+            if (menu == 2):
                 lihat_mahasiswa()
-            if menu == 3 :
+            if (menu == 3):
                 update_mahasiswa()
-            if menu == 4 :
+            if (menu == 4):
                 hapus_mahasiswa()
-            if menu == 5 :
+            if (menu == 5):
                 print("\n\nterima kasih sudah menggunakan program saya :)".upper())
                 exit()
             else:
