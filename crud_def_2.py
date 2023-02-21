@@ -8,7 +8,7 @@ data = {}
 def tambah_data(nim,nama,kelas,prodi,lahir):
     """TAMBAH DATA"""
     if (nim in data):
-        print("DATA GAGAL DITAMBAHKAN, NIM SUDAH ADA !")
+        print("\n\nDATA GAGAL DITAMBAHKAN, NIM SUDAH ADA !")
         return False
     else:
         data[nim] = nim,nama,kelas,prodi,lahir
@@ -87,12 +87,7 @@ def update_data(nim):
         update = input("Apakah anda yakin ingin mengubah data? [y/n]: ").lower()
         if (update == "y"):
             update_masbro(nim,nama,kelas,prodi,lahir)
-            while True:
-                keluar = input("Keluar[y]: ").lower()
-                if (keluar == "y"):
-                    main()
-                else:
-                    continue
+            
         elif (update == "n"):
             print("\nDATA TIDAK JADI DIUPDATE !")
             time.sleep(1.2)
@@ -103,14 +98,6 @@ def update_data(nim):
                     main()
                 elif (keluar == "update"):
                     update_masbro(nim,nama,kelas,prodi,lahir)
-
-                    while True:
-                        apakah_keluar = input("Keluar ?[y]").lower()
-                        if (apakah_keluar == "y"):
-                            main()
-                        else:
-                            print("Hanya ada opsi [y] !")
-                            continue
 
                 else:
                     print("Pilihan tidak tersedia. Silahkan pilih kembali !")
@@ -126,7 +113,7 @@ def update_masbro(nim,nama,kelas,prodi,lahir):
     data.update({nim:[nim,nama,kelas,prodi,lahir]})
     print("\n\nDATA BERHASIL DI UPDATE !\n")
     time.sleep(1.2)
-    cari(nim)
+    main()
 
 
 def hapus_data(nim):
